@@ -1,33 +1,23 @@
-# VueTSBlanc
+# Компоненты с круговым прогресс баром и круговой диаграммой
 
-This template should help get you started developing with Vue 3 in Vite.
 
-## Recommended IDE Setup
+Задача 1
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Реализовать на Vue 3 (composition api) без использования сторонних библиотек компонент кругового прогресс бара. В реализации использовать SVG, не canvas. Реализация и через svg и через canvas будет плюсом, но обязательная программа - SVG.
 
-## Type Support for `.vue` Imports in TS
+![alt text](image.png)
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+Прогрессбар имеет 4 состояния - in progress, success, warning, error.
+При изменении значения прогресс бара анимация увеличения должна быть плавной. Изменения статуса так же должно быть плавным.
+По мере увеличения значения прогресс бара цвет заполненного сектора окружности меняется от красного к зеленому.
+Компонент должен быть полноценным, готовым к использованию в проекте. Подготовить страницу с демонстрацией возможностей компонента.
 
-## Customize configuration
+Так же должна быть возможность изменить тип прогресс бара на dashboard, в таком случае он должен изменить форму на следующую:
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+![alt text](image-1.png)
 
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
+Задача 2
+Делать в том же проекте, отдельная страница, так же vue, так же composition api.
+Реализовать круговую диаграмму используя библиотеку chartjs. Так же реализовать форму, состоящую из полей: наименование, значение, цвет. Для выбора цвета использовать color picker из какой-нибудь сторонней библиотеки, например https://www.npmjs.com/package/vue-colour-picker
+При добавлении элемента через форму добавлять его в pie chart. Элементы должно быть можно удалять и редактировать. Реализовать в соответствии с дизайном https://www.figma.com/design/wlwVRFgUH1BYsAOKgylnzY/Untitled?node-id=0-1&t=a2W3WL18kEtD7ZI3-1
+В отношении color picker строгое соответствие дизайна не требуется, главное чтобы цвет выбирался.
