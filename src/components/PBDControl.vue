@@ -2,11 +2,11 @@
     <div class="center">
         <ProgressBarCircl :valNum='valNum' :isDashBar='isDashBar' :conditionBarCurr="conditionBarCurr" />
         <div class="controls">
-            <button @click="start">Старт</button>
-            <button @click="stop">Стоп</button>
-            <button @click="add">+</button>
-            <button @click="remove">-</button>
-            <button @click="onDashBar">Dash</button>
+            <button @click="onStart">Старт</button>
+            <button @click="onStop">Стоп</button>
+            <button @click="onAdd">+</button>
+            <button @click="onRemove">-</button>
+            <button @click="togglDashBar">Dash</button>
             <button @click="conditionBarSetup($event)">warning</button>
             <button @click="conditionBarSetup($event)">error</button>
         </div>
@@ -23,11 +23,8 @@ const conditionBar = ref(['warning', 'error', 'success'])
 const conditionBarCurr = ref('inProgress')
 
 
-watchEffect(() => valNum.value >= 100 ? conditionBarCurr.value = 'success' : valNum.value)
-watchEffect(() => valNum.value < 100 && conditionBarCurr.value === 'success' ? conditionBarCurr.value = 'inProgress' : valNum.value)
-
 const conditionBarSetup = (e: Event) => {
-    stop()
+    onStop()
     if (conditionBarCurr.value !== 'success') {
         for (let threshold of conditionBar.value) {
             if ((e.target as HTMLInputElement).innerHTML === threshold) {
@@ -38,16 +35,16 @@ const conditionBarSetup = (e: Event) => {
 }
 
 const i = ref(0)
-const start = () => {
-    valNum.value < 100 ? conditionBarCurr.value = 'inProgress' : conditionBarCurr.value = 'success'
+const onStart = () => {
+    valNum.value < 1 ? conditionBarCurr.value = 'inProgress' : conditionBarCurr.value = 'success'
     i.value = setInterval(() => {
-        valNum.value !== 100 ? valNum.value++ : clearInterval(i.value)
-    }, 1000);
+        valNum.value < 1 ? valNum.value += 0.01 : clearInterval(i.value)
+    }, 500);
 }
-const stop = () => clearInterval(i.value)
-const add = () => valNum.value < 100 ? valNum.value += 5 : valNum.value
-const remove = () => valNum.value > 0 ? valNum.value -= 5 : valNum.value
-const onDashBar = () => isDashBar.value = !isDashBar.value
+const onStop = () => clearInterval(i.value)
+const onAdd = () => valNum.value < 1 ? valNum.value += 0.05 : valNum.value
+const onRemove = () => valNum.value > 0 ? valNum.value -= 0.05 : valNum.value
+const togglDashBar = () => isDashBar.value = !isDashBar.value
 
 </script>
 
@@ -69,11 +66,5 @@ button {
 .controls {
     padding-left: 30px;
     width: 650px;
-}
-
-.center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 </style>

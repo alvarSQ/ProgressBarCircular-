@@ -45,3 +45,9 @@ section,
   position: relative;
   padding: 40px 0;
 }
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
