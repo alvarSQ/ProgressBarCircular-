@@ -1,4 +1,15 @@
+@import "utils/reset";
 @import url("https://fonts.googleapis.com/css?family=Inter");
+
+.vc-colorpicker {
+  box-shadow: none !important;
+  width: 100% !important; 
+}
+
+.vc-colorpicker--container {
+  margin-top: 20px;
+    padding: 0 !important;
+}
 
 html {
   height: 100%;
@@ -61,6 +72,18 @@ section,
     align-items: center;
 }
 
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    height: 60px;
+    font-size: 16px;
+    border-radius: 10px;
+    color: white;
+    background: rgba(27, 132, 255, 1);
+}
+
 .container {
   // flex: 0 0 auto;
   margin: 0 auto;
@@ -68,6 +91,7 @@ section,
   width: 100%;
   max-width: 1170px;
   font-family: Inter;
+  font-weight: 400;
   // @media (max-width: 1170px) {
   //   width: 940px;
   // }
@@ -81,3 +105,4 @@ section,
   //   width: 300px;
   // }
 }
+
