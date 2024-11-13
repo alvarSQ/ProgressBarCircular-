@@ -1,4 +1,5 @@
 <template>
+  <div class="container">
   <div class="title">
     <span>Круговая диаграмма</span>
   </div>
@@ -104,6 +105,7 @@
     :isAddSector="isAddSector"
     :sendDataLabel="sendDataLabel"
   />
+  </div>
 </template>
 
 <script setup lang="ts">

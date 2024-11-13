@@ -1,4 +1,5 @@
 <template>
+    <div class="container">
     <div class="center">
         <ProgressBarCircl :valNum='valNum' :isDashBar='isDashBar' :conditionBarCurr="conditionBarCurr" />
         <div class="controls">
@@ -10,6 +11,7 @@
             <button @click="conditionBarSetup($event)">warning</button>
             <button @click="conditionBarSetup($event)">error</button>
         </div>
+    </div>
     </div>
 </template>
 

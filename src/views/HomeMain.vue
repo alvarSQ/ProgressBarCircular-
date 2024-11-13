@@ -1,15 +1,17 @@
 <template>
     <div class="wrapper">
         <div class="container">
-
-            <!-- <PBDControl /> -->
-            <CircleDiagram />
+        <div class="btn" @click="goPBDControl">Круговой прогрессбар/дашбоард </div>
+        <div class="btn" style="margin-top: 50px;" @click="goCircleDiagram">Диаграмма в виде круга </div>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import PBDControl from '@/components/PBDControl.vue'
-import CircleDiagram from '@/components/CircleDiagram.vue'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
+
+const goPBDControl = () => router.push({ name: 'ProgressBarControl' })
+const goCircleDiagram = () => router.push({ name: 'CircleDiagram' })
 </script>
