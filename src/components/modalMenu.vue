@@ -1,5 +1,5 @@
 <template>
-  <div class="modal-overlay">
+  <div class="modal">
     <p class="title">Добавление сектора</p>
     <div class="text-field text-field_floating">
       <input
@@ -168,7 +168,7 @@ input {
   }
 }
 
-.modal-overlay {
+.modal {
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -176,11 +176,15 @@ input {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 390px;
+  min-width: 340px;
   padding: 20px;
   gap: 20px;
   border-radius: 15px;
   background-color: white;
   z-index: 99;
+  @media (max-width: 412px) {
+   width: 100%
+  }
 }
 
 .dark {

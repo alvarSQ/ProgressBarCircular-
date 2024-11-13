@@ -82,6 +82,10 @@ section,
     border-radius: 10px;
     color: white;
     background: rgba(27, 132, 255, 1);
+    min-width: 300px;
+  //   @media (max-width: 412px) {
+  //  width: 100%
+  // }
 }
 
 .container {
@@ -92,17 +96,5 @@ section,
   max-width: 1170px;
   font-family: Inter;
   font-weight: 400;
-  // @media (max-width: 1170px) {
-  //   width: 940px;
-  // }
-  // @media (max-width: 980px) {
-  //   width: 620px;
-  // }
-  // @media (max-width: 680px) {
-  //   max-width: 460px;
-  // }
-  // @media (max-width: 520px) {
-  //   width: 300px;
-  // }
 }
 
