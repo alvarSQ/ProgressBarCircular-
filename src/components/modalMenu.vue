@@ -2,7 +2,12 @@
   <div class="modal-overlay">
     <p class="title">Добавление сектора</p>
     <div class="text-field text-field_floating">
-      <input class="text-field__input" type="name" id="name" v-model="labels[0]" />
+      <input
+        class="text-field__input"
+        type="name"
+        id="name"
+        v-model="receiveDataLabel.name"
+      />
       <label class="text-field__label" for="name">Наименование</label>
     </div>
     <div class="text-field text-field_floating">
@@ -10,25 +15,26 @@
         class="text-field__input"
         type="quantity"
         id="quantity"
-        :value="quantity[0]"
+        v-model="receiveDataLabel.quantity"
       />
       <label class="text-field__label" for="quantity">Значение</label>
     </div>
     <div class="text-field text-field_floating">
-      <input class="text-field__input" type="colorIn" id="colorIn" :value="colorIn[0]" />
+      <input
+        class="text-field__input"
+        type="colorIn"
+        id="colorIn"
+        v-model="receiveDataLabel.color"
+      />
       <label class="text-field__label" for="colorIn">Цвет</label>
-      <div class="colorPic">
+      <div class="colorPic" @click="showColorPicker">
         <div>
           <svg width="20" height="20" viewBox="0 0 0.56 0.56">
-            <circle cx=".28" cy=".28" r=".28" :fill="colorIn[0]" />
+            <circle cx=".28" cy=".28" r=".28" :fill="pureColor" />
           </svg>
         </div>
         <div>
-          <svg
-            :class="{shevron : isShevronOpen}"
-            width="12"
-            viewBox="0 0 21.25 12.36"
-          >
+          <svg :class="{ shevron: isShevronOpen }" width="12" viewBox="0 0 21.25 12.36">
             <rect
               width="17.5"
               height="2.43"
@@ -45,48 +51,45 @@
         </div>
       </div>
       <ColorPicker
+        v-if="isColorPicker"
         is-widget
-        format="name"
-        shape="circle"
+        format="rgb"
         picker-type="chrome"
-        use-type="pure"
         disable-history
-        lang="En"
         v-model:pureColor="pureColor"
       />
     </div>
-    <div class="btn">Добавить сектор</div>
+    <div v-if="isAddSector" class="btn" @click="$emit('addSector', receiveDataLabel)">Добавить сектор</div>
+    <div v-else class="btn" @click="$emit('editSector', receiveDataLabel)">Изменить сектор</div>
   </div>
-  <div class="dark"></div>
+  <div class="dark" @click="$emit('closeModal')"></div>
 </template>
 
 <script lang="ts" setup>
-// import CloseSvg from '@/components/svg/close.vue'
-// import { useRoute, useRouter } from 'vue-router'
-import { ref, computed } from "vue";
-// import type { ColorInputWithoutInstance } from "tinycolor2";
+import { ref, reactive } from "vue";
+import type { IDataLabel } from '@/moduls/interfases';
 
 const props = defineProps<{
-  labels: string[];
-  quantity: number[];
-  colorIn: string[];
+  sendDataLabel: IDataLabel
+  isAddSector: boolean
 }>();
 
-const pureColor = ref(props.colorIn[0]);
+const emit = defineEmits(['addSector', 'editSector', 'closeModal']);
 
-const isShevronOpen = ref(false)
-// const gradientColor = ref(
-//   "linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 100%)"
-// )
+const pureColor = ref(props.sendDataLabel.color);
 
-// const colorDiv = computed(() => )
+const isShevronOpen = ref(false);
+const isColorPicker = ref(false);
+const showColorPicker = () => {
+  isShevronOpen.value = !isShevronOpen.value;
+  isColorPicker.value = !isColorPicker.value;
+};
 
-// const goCategory = (slug) => {
-//   varStore.menuHead()
-//   router.push({ name: 'category', params: { slug: slug } })
-//   prodStore.loadProducts(new URLSearchParams(`category=${slug}`))
-//   varStore.isError = false
-// }
+const receiveDataLabel = reactive({
+  name: props.sendDataLabel.name,
+  quantity: props.sendDataLabel.quantity,
+  color: pureColor,
+});
 </script>
 
 <style lang="scss" scoped>
