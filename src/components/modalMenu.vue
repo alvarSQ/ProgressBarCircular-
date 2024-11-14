@@ -67,7 +67,6 @@
 
 <script lang="ts" setup>
 import { ref, reactive } from "vue";
-// @ts-ignore
 import type { IDataLabel } from '@/modules/interface';
 
 const props = defineProps<{

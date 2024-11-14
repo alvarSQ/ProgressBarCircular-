@@ -109,11 +109,9 @@
 </template>
 
 <script setup lang="ts">
-// @ts-ignore
 import ModalMenu from "@/components/ModalMenu.vue";
 import { reactive, ref, computed, shallowRef } from "vue";
 import type { IDataLabel } from "@/modules/interface";
-// @ts-ignore
 import PieDiagram from "@/components/UI/pieDiagram.vue";
 
 const data = shallowRef({
