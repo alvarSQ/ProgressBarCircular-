@@ -22,5 +22,5 @@ export default defineConfig({
       }
     }
   },
-  base: '/ProgressBarCircular-'
+  base: '/progress-bar-circle'
 })
