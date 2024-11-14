@@ -1,7 +1,7 @@
 <template>
     <div class="container">
     <div class="center">
-        <ProgressBarCircl :valNum='valNum' :isDashBar='isDashBar' :conditionBarCurr="conditionBarCurr" />
+        <ProgressBarCircle :valNum='valNum' :isDashBar='isDashBar' :conditionBarCurr="conditionBarCurr" />
         <div class="controls">
             <button @click="onStart">Старт</button>
             <button @click="onStop">Стоп</button>
@@ -13,11 +13,13 @@
         </div>
     </div>
     </div>
+    
 </template>
 
 <script setup lang="ts">
-import { ref, watchEffect } from 'vue'
-import ProgressBarCircl from '@/components/UI/progressBarCircl.vue'
+import { ref } from 'vue'
+import ProgressBarCircle from '@/components/UI/progressBarCircle.vue'
+
 
 const valNum = ref(0)
 const isDashBar = ref(false)
