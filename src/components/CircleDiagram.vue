@@ -97,7 +97,7 @@
       </div>
     </div>
     <div class="center"></div>
-    <ModalMenu
+    <ModalWin
       v-if="isModal"
       @close-modal="isModal = !isModal"
       @add-sector="addSector"
@@ -109,7 +109,7 @@
 </template>
 
 <script setup lang="ts">
-import ModalMenu from "@/components/ModalMenu.vue";
+import ModalWin from "@/components/ModalWin.vue";
 import { reactive, ref, computed, shallowRef } from "vue";
 import type { IDataLabel } from "@/modules/interface";
 import PieDiagram from "@/components/UI/pieDiagram.vue";
