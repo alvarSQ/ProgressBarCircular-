@@ -110,13 +110,13 @@
 
 <script setup lang="ts">
 // @ts-ignore
-import ModalMenu from "@/components/modalMenu.vue";
-import { reactive, ref, computed } from "vue";
-import type { IDataLabel } from "@/moduls/interfases";
+import ModalMenu from "@/components/ModalMenu.vue";
+import { reactive, ref, computed, shallowRef } from "vue";
+import type { IDataLabel } from "@/modules/interface";
 // @ts-ignore
 import PieDiagram from "@/components/UI/pieDiagram.vue";
 
-const data = reactive({
+const data = shallowRef({
   labels: ["VueJs", "EmberJs", "ReactJs", "AngularJs"],
   datasets: [
     {
@@ -153,9 +153,9 @@ const forcedReRender = async () => (isRe_render.value = false);
 const addSector = (receive: IDataLabel) => {
   isModal.value = false;
   forcedReRender().then(() => {
-    data.datasets[0].data.push(receive.quantity);
-    data.labels.push(receive.name);
-    data.datasets[0].backgroundColor.push(receive.color);
+    data.value.datasets[0].data.push(receive.quantity);
+    data.value.labels.push(receive.name);
+    data.value.datasets[0].backgroundColor.push(receive.color);
     isRe_render.value = true;
   });
 };
@@ -163,9 +163,9 @@ const addSector = (receive: IDataLabel) => {
 const editBtnSector = (i: number) => {
   isAddSector.value = false;
   isModal.value = true;
-  sendDataLabel.name = data.labels[i];
-  sendDataLabel.quantity = data.datasets[0].data[i];
-  sendDataLabel.color = data.datasets[0].backgroundColor[i];
+  sendDataLabel.name = data.value.labels[i];
+  sendDataLabel.quantity = data.value.datasets[0].data[i];
+  sendDataLabel.color = data.value.datasets[0].backgroundColor[i];
 };
 
 const editSector = (receive: IDataLabel) => {
@@ -175,24 +175,24 @@ const editSector = (receive: IDataLabel) => {
     // data.datasets[0].data.forEach((e, i) => e === sendDataLabel.quantity ? data.datasets[0].data[i] = receive.quantity : e);
     // data.datasets[0].backgroundColor.forEach((e, i) => e === sendDataLabel.color ? data.datasets[0].backgroundColor[i] = receive.color : e);
     let index = 0;
-    index = data.labels.indexOf(sendDataLabel.name);
-    data.labels[index] = receive.name;
-    data.datasets[0].data[index] = receive.quantity;
-    data.datasets[0].backgroundColor[index] = receive.color;
+    index = data.value.labels.indexOf(sendDataLabel.name);
+    data.value.labels[index] = receive.name;
+    data.value.datasets[0].data[index] = receive.quantity;
+    data.value.datasets[0].backgroundColor[index] = receive.color;
     isRe_render.value = true;
   });
 };
 
 const deleteBtnSector = (i: number) => {
   forcedReRender().then(() => {
-    data.labels.splice(i, 1);
-    data.datasets[0].data.splice(i, 1);
-    data.datasets[0].backgroundColor.splice(i, 1);
+    data.value.labels.splice(i, 1);
+    data.value.datasets[0].data.splice(i, 1);
+    data.value.datasets[0].backgroundColor.splice(i, 1);
     isRe_render.value = true;
   });
 };
 
-const chartDataComputed = computed(() => data);
+const chartDataComputed = computed(() => data.value);
 </script>
 
 <style lang="scss" scoped>

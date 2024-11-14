@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
 import { ref, watchEffect } from 'vue'
-import ProgressBarCircl from '@/components/UI/ProgressBarCircl.vue'
+import ProgressBarCircl from '@/components/UI/progressBarCircl.vue'
 
 const valNum = ref(0)
 const isDashBar = ref(false)

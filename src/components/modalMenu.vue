@@ -67,7 +67,8 @@
 
 <script lang="ts" setup>
 import { ref, reactive } from "vue";
-import type { IDataLabel } from '@/moduls/interfases';
+// @ts-ignore
+import type { IDataLabel } from '@/modules/interface';
 
 const props = defineProps<{
   sendDataLabel: IDataLabel
