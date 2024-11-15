@@ -96,7 +96,6 @@
         </ul>
       </div>
     </div>
-    <div class="center"></div>
     <ModalWin
       v-if="isModal"
       @close-modal="isModal = !isModal"

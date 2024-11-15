@@ -2,8 +2,7 @@
   "name": "vuetsblanc",
   "version": "0.0.0",
   "private": true,
-  "type": "module",
-  "homepage": "https://alvarsq.github.io/ProgressBarCircular-",
+  "type": "module",  
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",

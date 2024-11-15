@@ -98,7 +98,7 @@ const dashoffset = computed(() => circumference.value * (1 - progress.value))
 @import url("https://fonts.googleapis.com/css?family=Comfortaa");
 
 svg * {
-    transition: all 2s;
+    transition: all 1s;
 }
 
 .ring {
@@ -117,12 +117,12 @@ svg * {
     color: #8d8c8c;
     font-family: "Comfortaa";
     opacity: 1;
-    transition: 1s
+    transition: 0.5s
 }
 
 .iconHidden {
     opacity: 0;
-    transition: 1s
+    transition: 0.5s
 }
 
 .progress-bar {

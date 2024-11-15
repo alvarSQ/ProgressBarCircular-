@@ -136,12 +136,6 @@ section,
     color: rgba(37, 47, 74, 1);;
 }
 
-.center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .btn {
     display: flex;
     justify-content: center;
@@ -153,18 +147,25 @@ section,
     color: white;
     background: rgba(27, 132, 255, 1);
     min-width: 300px;
-  //   @media (max-width: 412px) {
-  //  width: 100%
-  // }
 }
 
 .container {
-  // flex: 0 0 auto;
   margin: 0 auto;
   padding-top: 30px;
   width: 100%;
   max-width: 1170px;
   font-family: Inter;
   font-weight: 400;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+   position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  gap: 15px;
 }
 
